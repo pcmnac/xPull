@@ -1,0 +1,34 @@
+<settings>
+	<offline>false</offline>  
+
+	<servers>
+	  <server>
+		<id>archiva.fibra.snapshots</id>
+		<username>Hudson</username>
+		<password>hudeploy2</password>
+	  </server>
+	  <server>
+		<id>archiva.fibra.internal</id>
+		<username>Hudson</username>
+		<password>hudeploy2</password>
+	  </server>
+	</servers>
+
+	<mirrors>
+		<mirror>
+			<id>ibiblio.org</id>
+			<name>ibiblio.org</name>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>antelink.com</id>
+			<url>http://maven.antelink.com/content/repositories/central/</url>
+			<mirrorOf>central</mirrorOf>
+			<!-- France -->
+		</mirror>
+	</mirrors>
+
+</settings>
+
+
