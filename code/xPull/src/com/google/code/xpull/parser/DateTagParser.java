@@ -10,6 +10,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.google.code.xpull.ITagHandler;
 
@@ -34,10 +35,31 @@ public class DateTagParser extends BaseTagParser<Date>
         this(null, datePattern);
     }
 
+    public DateTagParser(DateFormat dateFormat)
+    {
+        this(null, dateFormat);
+    }
+
     public DateTagParser(ITagHandler<Date> handler, String datePattern)
     {
         super(handler);
         dateFormat = new SimpleDateFormat(datePattern);
+    }
+
+    public DateTagParser(ITagHandler<Date> handler, DateFormat dateFormat)
+    {
+        super(handler);
+        setDateFormat(dateFormat);
+    }
+
+    public DateFormat getDateFormat()
+    {
+        return dateFormat;
+    }
+
+    public void setDateFormat(DateFormat dateFormat)
+    {
+        this.dateFormat = dateFormat;
     }
 
     @Override
@@ -48,10 +70,14 @@ public class DateTagParser extends BaseTagParser<Date>
 
         try
         {
-            date = dateFormat.parse(parser.nextText());
+            String dateText = parser.nextText();
+            Log.d("xPull", "date text: " + dateText);
+            date = dateFormat.parse(dateText);
+            Log.d("xPull", "parsed date: " + date);
         }
         catch (ParseException e)
         {
+            throw new RuntimeException(e);
         }
 
         return date;
