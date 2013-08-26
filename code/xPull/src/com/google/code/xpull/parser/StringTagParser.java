@@ -25,7 +25,6 @@ public class StringTagParser extends BaseTagParser<String>
     {
 
         String result = parser.nextText();
-        parser.next();
 
         return result;
     }

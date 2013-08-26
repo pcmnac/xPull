@@ -1,5 +1,6 @@
 package com.google.code.xpull.tag;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import com.google.code.xpull.Tag;
@@ -22,10 +23,21 @@ public class DateTag extends Tag<Date>
     {
         this(name, pattern, false);
     }
+    
+    public DateTag(String name, DateFormat dateFormat)
+    {
+        this(name, dateFormat, false);
+    }
 
     public DateTag(String name, String pattern, boolean required)
     {
         super(name, new DateTagParser(pattern), required);
+    }
+    
+    
+    public DateTag(String name, DateFormat dateFormat, boolean required)
+    {
+        super(name, new DateTagParser(dateFormat), required);
     }
 
 }

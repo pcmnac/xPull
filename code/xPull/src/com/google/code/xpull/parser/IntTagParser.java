@@ -25,7 +25,6 @@ public class IntTagParser extends BaseTagParser<Integer>
     {
 
         Integer result = Integer.parseInt(parser.nextText());
-        parser.next();
 
         return result;
     }

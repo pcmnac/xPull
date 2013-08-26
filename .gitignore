@@ -16,6 +16,9 @@ local.properties
 .settings/
 .loadpath
 
+code/xPullTest/gen
+code/xPull/gen
+
 # External tool builders
 .externalToolBuilders/
 
