@@ -16,19 +16,21 @@ public class ParsingUtils
     public static boolean findNextStartTag(XmlPullParser parser, int endDepth) throws XmlPullParserException,
             IOException
     {
-
         boolean found = false;
 
-        do
+        if (parser.getEventType() != XmlPullParser.END_DOCUMENT)
         {
-            parser.next();
-            if (parser.getEventType() == XmlPullParser.TEXT && parser.isWhitespace())
+            do
             {
                 parser.next();
+                if (parser.getEventType() == XmlPullParser.TEXT && parser.isWhitespace())
+                {
+                    parser.next();
+                }
+                found = parser.getEventType() == XmlPullParser.START_TAG;
             }
-            found = parser.getEventType() == XmlPullParser.START_TAG;
+            while ((!found) && (parser.getDepth() > endDepth));
         }
-        while ((!found) && (parser.getDepth() > endDepth));
 
         return found;
     }

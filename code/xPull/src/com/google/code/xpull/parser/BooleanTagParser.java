@@ -23,8 +23,9 @@ public class BooleanTagParser extends BaseTagParser<Boolean>
     @Override
     protected Boolean doParse(XmlPullParser parser) throws XmlPullParserException, IOException
     {
-
-        Boolean result = Boolean.valueOf(parser.nextText());
+        String text = parser.nextText();
+        text = text != null ? text.trim() : "";
+        Boolean result = Boolean.valueOf(text) || text.equals("1") || text.equalsIgnoreCase("on");
 
         return result;
     }
